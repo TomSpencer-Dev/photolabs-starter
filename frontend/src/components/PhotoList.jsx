@@ -3,6 +3,8 @@ import React from "react";
 import "../styles/PhotoList.scss";
 import PhotoListItem from './PhotoListItem';
 
+
+
 const sampleDataForPhotoList = [
   {
     id: "1",
@@ -57,12 +59,10 @@ const sampleDataForPhotoList = [
   },
 ];
 
-  const photoListItems = sampleDataForPhotoList.map((photo) => {
-    return  <PhotoListItem key={photo.id} data={photo} />
+const PhotoList = ({ photos }) => {
+  const photoListItems = photos.map((photo) => {
+    return <PhotoListItem key={photo.id} data={photo} />;
   });
-
-const PhotoList = () => {
-
   return (
     <ul className="photo-list">
       {photoListItems}
