@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useState } from "react";
 
-import '../styles/HomeRoute.scss';
+import "../styles/HomeRoute.scss";
+import TopNavigationBar from "../components/TopNavigationBar";
+import PhotoList from "../components/PhotoList";
 
-const HomeRoute = () => {
+function HomeRoute(props) {
+const [currentFavorite, setCurrentFavorite] = useState({})
+
   return (
     <div className="home-route">
-      {/* Insert React */}
+      <TopNavigationBar topics = {props.topics} currentFavorite = {currentFavorite} />
+      <PhotoList setCurrentFavorite = {setCurrentFavorite}  photos = {props.photos} toggleModalState = {props.toggleModalState}  />
     </div>
   );
-};
+}
 
 export default HomeRoute;
