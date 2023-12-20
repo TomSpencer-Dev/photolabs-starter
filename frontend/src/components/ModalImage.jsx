@@ -8,7 +8,7 @@ const ModalImage = ({ data, setCurrentFavorite, toggleModalState }) => {
   
     return (
       <div>
-        <PhotoFavButton id={id} setCurrentFavorite={setCurrentFavorite} />
+        <PhotoFavButton id={id} setCurrentFavorite={setCurrentFavorite}  />
         <img className="photo-details-modal__image" src={urls.regular} alt={`General Image`} />
         <div className="photo-list__user-details">
           <img className="photo-list__user-profile" src={user.profile} alt={`Profile of ${user.username}`} />

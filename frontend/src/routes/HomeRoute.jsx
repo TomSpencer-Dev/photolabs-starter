@@ -5,12 +5,10 @@ import TopNavigationBar from "../components/TopNavigationBar";
 import PhotoList from "../components/PhotoList";
 
 function HomeRoute(props) {
-const [currentFavorite, setCurrentFavorite] = useState({})
-
   return (
     <div className="home-route">
-      <TopNavigationBar topics = {props.topics} currentFavorite = {currentFavorite} />
-      <PhotoList setCurrentFavorite = {setCurrentFavorite}  photos = {props.photos} toggleModalState = {props.toggleModalState}  />
+      <TopNavigationBar topics = {props.topics} currentFavorite = {props.currentFavorite} />
+      <PhotoList setCurrentFavorite = {props.setCurrentFavorite}  photos = {props.photos} toggleModalState = {props.toggleModalState}  />
     </div>
   );
 }

@@ -8,6 +8,7 @@ import PhotoDetailsModal from './routes/PhotoDetailsModal';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
+  const [currentFavorite, setCurrentFavorite] = useState({})
   const [modalState, setModalState] = useState(false);
   const [photoData, setPhotoData] = useState();
   const toggleModalState = function(photo) {
@@ -17,8 +18,8 @@ const App = () => {
 
   return (
     <div className="App">
-      <HomeRoute photos={photos} topics={topics} toggleModalState={toggleModalState} />
-      {modalState && <PhotoDetailsModal toggleModalState={toggleModalState} photo = {photoData} photos = {photos} />}
+      <HomeRoute photos={photos} topics={topics} toggleModalState={toggleModalState} currentFavorite = {currentFavorite} setCurrentFavorite = {setCurrentFavorite}  />
+      {modalState && <PhotoDetailsModal currentFavorite = {currentFavorite} setCurrentFavorite = {setCurrentFavorite} toggleModalState={toggleModalState} photo = {photoData} photos = {photos} />}
     </div>
   );
 };
