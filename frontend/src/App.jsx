@@ -18,7 +18,7 @@ const App = () => {
   return (
     <div className="App">
       <HomeRoute photos={photos} topics={topics} toggleModalState={toggleModalState} />
-      {modalState && <PhotoDetailsModal toggleModalState={toggleModalState} />}
+      {modalState && <PhotoDetailsModal toggleModalState={toggleModalState} photo = {photoData} photos = {photos} />}
     </div>
   );
 };

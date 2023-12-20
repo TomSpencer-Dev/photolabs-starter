@@ -4,6 +4,7 @@ import "../styles/PhotoList.scss";
 import PhotoListItem from './PhotoListItem';
 
 const PhotoList = ({ photos, setCurrentFavorite, toggleModalState }) => {
+console.log(photos);
   const photoListItems = photos.map((photo) => {
     return <PhotoListItem key={photo.id} data={photo} setCurrentFavorite ={setCurrentFavorite} toggleModalState = {toggleModalState} />;
   });
