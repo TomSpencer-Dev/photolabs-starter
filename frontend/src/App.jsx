@@ -9,9 +9,10 @@ import PhotoDetailsModal from './routes/PhotoDetailsModal';
 // Note: Rendering a single component to build components in isolation
 const App = () => {
   const [modalState, setModalState] = useState(false);
-  console.log(modalState);
-  const toggleModalState = function() {
+  const [photoData, setPhotoData] = useState();
+  const toggleModalState = function(photo) {
     setModalState(prev => !prev);
+    setPhotoData(photo);
   };
 
   return (

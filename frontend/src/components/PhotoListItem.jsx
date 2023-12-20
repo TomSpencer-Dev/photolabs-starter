@@ -7,7 +7,7 @@ const PhotoListItem = ({ data, setCurrentFavorite, toggleModalState }) => {
   const { urls, user, location, profile, id } = data;
   
     return (
-      <li className="photo-list__item" onClick={toggleModalState} >
+      <li className="photo-list__item" onClick={() =>toggleModalState(data)} >
         <PhotoFavButton id={id} setCurrentFavorite={setCurrentFavorite} />
         <img className="photo-list__image" src={urls.regular} alt={`General Image`} />
         <div className="photo-list__user-details">
