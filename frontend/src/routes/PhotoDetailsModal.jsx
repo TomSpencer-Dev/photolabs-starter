@@ -7,6 +7,7 @@ import ModalImage from 'components/ModalImage';
 import PhotoListItem from 'components/PhotoListItem';
 
 const PhotoDetailsModal = ({ toggleModalState, photo, setCurrentFavorite, currentFavorite }) => {
+console.log(photo)
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button" onClick={toggleModalState}>
