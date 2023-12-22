@@ -21,7 +21,7 @@ const App = () => {
   return (
     <div className="App">
       <HomeRoute photos={state.photoData} topics={state.topicData} toggleModalState={toggleModalState} currentFavorite = {currentFavorite} setCurrentFavorite = {setCurrentFavorite}  />
-      {state.modalState && <PhotoDetailsModal currentFavorite = {currentFavorite} setCurrentFavorite = {setCurrentFavorite} photoID = {state.modalState} toggleModalState={toggleModalState} photos = {state.photoData} />}
+      {state.modalState && <PhotoDetailsModal currentFavorite = {currentFavorite} setCurrentFavorite = {setCurrentFavorite} photo = {state.modalState} toggleModalState={toggleModalState} photos = {state.photoData} />}
     </div>
   );
 };
