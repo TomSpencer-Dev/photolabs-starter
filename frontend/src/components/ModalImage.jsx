@@ -3,12 +3,12 @@ import React from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
-const ModalImage = ({ data, setCurrentFavorite, toggleModalState }) => {
+const ModalImage = ({ data, setFavorites, toggleModalState }) => {
   const { urls, user, location, profile, id } = data;
 
     return (
       <div>
-        <PhotoFavButton id={id} setCurrentFavorite={setCurrentFavorite}  />
+        <PhotoFavButton id={id} setFavorites={setFavorites}  />
         <img className="photo-details-modal__image" src={urls.regular} alt={`General Image`} />
         <div className="photo-list__user-details">
           <img className="photo-list__user-profile" src={user.profile} alt={`Profile of ${user.username}`} />

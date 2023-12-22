@@ -6,7 +6,7 @@ import PhotoList from 'components/PhotoList';
 import ModalImage from 'components/ModalImage';
 
 
-const PhotoDetailsModal = ({ toggleModalState, setCurrentFavorite, currentFavorite, photo, photos }) => {
+const PhotoDetailsModal = ({ toggleModalState, setFavorites, photo }) => {
 
   return (
     <div className="photo-details-modal">
@@ -14,9 +14,9 @@ const PhotoDetailsModal = ({ toggleModalState, setCurrentFavorite, currentFavori
         <img src={closeSymbol} alt="close symbol" />
       </button>
       <div className="photo-details-modal__images">
-        <ModalImage data={photo} setCurrentFavorite = {setCurrentFavorite}  />
+        <ModalImage data={photo} setFavorites = {setFavorites}  />
         <div className="photo-details-modal__header">Similar Photos</div>
-        <PhotoList photos = {Object.values(photo.similar_photos)} setCurrentFavorite= {setCurrentFavorite} />
+        <PhotoList photos = {Object.values(photo.similar_photos)} setFavorites= {setFavorites} />
       </div>
     </div>
   );

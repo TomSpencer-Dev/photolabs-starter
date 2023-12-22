@@ -5,25 +5,21 @@ export const ACTIONS = {
   SET_MODAL_STATE: 'SET_MODAL_STATE',
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
   TOGGLE_MODAL_STATE: 'TOGGLE_MODAL_STATE',
-  SET_TOPIC_DATA: 'SET_TOPIC_DATA'
+  SET_TOPIC_DATA: 'SET_TOPIC_DATA',
+  SET_FAVORITE: 'SET_FAVORITE',
+  GET_PHOTOS_BY_TOPICS: 'GET_PHOTOS_BY TOPICS'
 };
 
 const useApplicationData = () => {
 
-  const [currentFavorite, setCurrentFavorite] = useState({});
-
-  const [modalState, setModalState] = useState(false);
-
-  const [photoData, setPhotoData] = useState();
-
-  const [topicData, setTopicData] = useState();
-
   const initialState = {
-    currentFavorite: {},
+    favorites: {},
     modalState: false,
     photoData: [],
     topicData: [],
   };
+
+const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
     fetch('http://localhost:8001/api/photos')
@@ -37,7 +33,11 @@ const useApplicationData = () => {
       .then(data => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }));
   }, []);
 
-  const [state, dispatch] = useReducer(reducer, initialState);
+useEffect(() => {
+    fetch('http://localhost:8001/api/topics/photos/:topic_id')
+      .then(res => res.json())
+      .then(data => dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPIC, payload: data }));
+  }, []);
 
   function reducer(state, action) {
     switch (action.type) {
@@ -47,21 +47,29 @@ const useApplicationData = () => {
         return { ...state, photoData: action.payload };
       case ACTIONS.SET_TOPIC_DATA:
         return { ...state, topicData: action.payload };
+      case ACTIONS.SET_FAVORITE:
+        const newObj = { ...state };
+        if (newObj.favorites[action.payload]) {
+          delete newObj.favorites[action.payload];
+          return newObj;
+        }
+        newObj.favorites[action.payload] = true;
+        return newObj;
     }
   }
 
   const toggleModalState = function(photo) {
     dispatch({ type: ACTIONS.TOGGLE_MODAL_STATE, payload: photo });
   };
+
+  const setFavorites = function(photoID) {
+    dispatch({ type: ACTIONS.SET_FAVORITE, payload: photoID });
+  };
+
   return {
     state,
-    dispatch,
-    currentFavorite,
-    setCurrentFavorite,
-    modalState,
-    photoData,
     toggleModalState,
-    topicData
+    setFavorites
   };
 };
 

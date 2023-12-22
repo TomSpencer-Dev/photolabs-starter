@@ -8,20 +8,13 @@ import useApplicationData from './useApplicationData';
 // Note: Rendering a single component to build components in isolation
 const App = () => {
   const { state,
-    dispatch,
-    currentFavorite,
-    setCurrentFavorite,
-    modalState,
-    photoData,
     toggleModalState,
-    topicData } = useApplicationData();
-
-  
+    setFavorites } = useApplicationData();
 
   return (
     <div className="App">
-      <HomeRoute photos={state.photoData} topics={state.topicData} toggleModalState={toggleModalState} currentFavorite = {currentFavorite} setCurrentFavorite = {setCurrentFavorite}  />
-      {state.modalState && <PhotoDetailsModal currentFavorite = {currentFavorite} setCurrentFavorite = {setCurrentFavorite} photo = {state.modalState} toggleModalState={toggleModalState} photos = {state.photoData} />}
+      <HomeRoute photos={state.photoData} topics={state.topicData} toggleModalState={toggleModalState} favorites = {state.favorites} setFavorites = {setFavorites}  />
+      {state.modalState && <PhotoDetailsModal favorites = {state.favorites} setFavorites = {setFavorites} photo = {state.modalState} toggleModalState={toggleModalState} photos = {state.photoData} />}
     </div>
   );
 };

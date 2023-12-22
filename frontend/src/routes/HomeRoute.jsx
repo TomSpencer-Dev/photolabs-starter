@@ -7,8 +7,8 @@ import PhotoList from "../components/PhotoList";
 function HomeRoute(props) {
   return (
     <div className="home-route">
-      <TopNavigationBar topics = {props.topics} currentFavorite = {props.currentFavorite} />
-      <PhotoList setCurrentFavorite = {props.setCurrentFavorite}  photos = {props.photos} toggleModalState = {props.toggleModalState}  />
+      <TopNavigationBar topics = {props.topics} favorites = {props.favorites} />
+      <PhotoList setFavorites = {props.setFavorites}  photos = {props.photos} toggleModalState = {props.toggleModalState}  />
     </div>
   );
 }

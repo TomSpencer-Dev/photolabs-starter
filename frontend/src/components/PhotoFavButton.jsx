@@ -7,15 +7,7 @@ function PhotoFavButton(props) {
 
   const toggleFavoritePhoto = function() {
     setIsFavorited(prev => !prev);
-    props.setCurrentFavorite(prev => {
-      const newObj = {...prev};
-      if (newObj[props.id]) {
-        delete newObj[props.id];
-        return newObj;
-      }
-      newObj[props.id] = true;
-      return newObj;
-    });
+    props.setFavorites(props.id);
   };
   return (
     <div className="photo-list__fav-icon" onClick={toggleFavoritePhoto}>
