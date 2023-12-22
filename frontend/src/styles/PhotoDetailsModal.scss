@@ -30,8 +30,10 @@
 }
 
 .photo-details-modal__image {
-  max-width: 95%;
+  width: 95%;
   border-radius: 8px;
+  max-height: 60vh;
+  object-fit: cover;
 }
 
 .photo-details-modal__top-bar {
