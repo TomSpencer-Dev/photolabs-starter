@@ -5,7 +5,7 @@ import PhotoFavButton from "./PhotoFavButton";
 
 const ModalImage = ({ data, setCurrentFavorite, toggleModalState }) => {
   const { urls, user, location, profile, id } = data;
-  
+
     return (
       <div>
         <PhotoFavButton id={id} setCurrentFavorite={setCurrentFavorite}  />
