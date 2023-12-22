@@ -7,7 +7,8 @@ export const ACTIONS = {
   TOGGLE_MODAL_STATE: 'TOGGLE_MODAL_STATE',
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   SET_FAVORITE: 'SET_FAVORITE',
-  GET_PHOTOS_BY_TOPICS: 'GET_PHOTOS_BY TOPICS'
+  SET_TOPIC_ID: 'SET_TOPIC_ID',
+  GET_PHOTOS_BY_TOPIC: 'GET_PHOTOS_BY_TOPICS'
 };
 
 const useApplicationData = () => {
@@ -16,10 +17,10 @@ const useApplicationData = () => {
     favorites: {},
     modalState: false,
     photoData: [],
-    topicData: [],
+    topicData: []
   };
 
-const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
     fetch('http://localhost:8001/api/photos')
@@ -33,11 +34,6 @@ const [state, dispatch] = useReducer(reducer, initialState);
       .then(data => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }));
   }, []);
 
-useEffect(() => {
-    fetch('http://localhost:8001/api/topics/photos/:topic_id')
-      .then(res => res.json())
-      .then(data => dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPIC, payload: data }));
-  }, []);
 
   function reducer(state, action) {
     switch (action.type) {
@@ -55,6 +51,9 @@ useEffect(() => {
         }
         newObj.favorites[action.payload] = true;
         return newObj;
+      case ACTIONS.GET_PHOTOS_BY_TOPICS:
+      return { ...state, photoData: action.payload };
+
     }
   }
 
@@ -66,10 +65,17 @@ useEffect(() => {
     dispatch({ type: ACTIONS.SET_FAVORITE, payload: photoID });
   };
 
+  const setTopic = function(topicID) {
+    fetch(`http://localhost:8001/api/topics/photos/${topicID}`)
+      .then(res => res.json())
+      .then(data => dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: data }));
+  };
+
   return {
     state,
     toggleModalState,
-    setFavorites
+    setFavorites,
+    setTopic
   };
 };
 

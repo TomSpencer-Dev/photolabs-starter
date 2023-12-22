@@ -3,10 +3,10 @@ import "../styles/TopicList.scss";
 import TopicListItem from 'components/TopicListItem';
 
 
-const TopicList = ({topics}) => {
+const TopicList = ({topics, setTopic}) => {
 const topicListItems = topics.map((topic) =>
  { 
-  return <TopicListItem key={topic.id} data={topic} />;
+  return <TopicListItem key={topic.id} data={topic} setTopic = {setTopic} />;
 });
   return (
     <ul className="top-nav-bar__topic-list">
