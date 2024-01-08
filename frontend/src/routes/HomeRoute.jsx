@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-
 import "../styles/HomeRoute.scss";
 import TopNavigationBar from "../components/TopNavigationBar";
 import PhotoList from "../components/PhotoList";
 
+//HomeRoute is the main page to accept components to build the page
 function HomeRoute(props) {
   return (
     <div className="home-route">

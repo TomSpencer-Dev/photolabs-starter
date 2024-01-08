@@ -1,8 +1,8 @@
 import React from "react";
-
 import "../styles/PhotoList.scss";
 import PhotoListItem from './PhotoListItem';
 
+//PhotoList imports photos and states and creates an array of photos and their corresponding data
 const PhotoList = ({ photos, setFavorites, toggleModalState }) => {
 
   const photoListItems = photos.map((photo) => {

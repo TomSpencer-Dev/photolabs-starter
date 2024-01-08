@@ -1,10 +1,10 @@
 import React from "react";
-
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
-const ModalImage = ({ data, setFavorites, toggleModalState }) => {
-  const { urls, user, location, profile, id } = data;
+//ModalImage displays the photo and user details
+const ModalImage = ({ data, setFavorites }) => {
+  const { urls, user, location, id } = data;
 
   return (
     <div>

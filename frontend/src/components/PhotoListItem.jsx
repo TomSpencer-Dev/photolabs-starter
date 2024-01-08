@@ -1,8 +1,8 @@
 import React from "react";
-
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
+//PhotoListItem represents one item from PhotoList in JSX
 const PhotoListItem = ({ data, setFavorites, toggleModalState }) => {
   const { urls, user, location, profile, id } = data;
 

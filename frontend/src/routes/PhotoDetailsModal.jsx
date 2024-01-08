@@ -1,11 +1,10 @@
 import React from 'react';
-
 import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
 import ModalImage from 'components/ModalImage';
 
-
+//PhotoDetailsModal is the card that displays photo details when a photo is selected
 const PhotoDetailsModal = ({ toggleModalState, setFavorites, photo }) => {
 
   return (

@@ -1,9 +1,9 @@
 import React from 'react';
-
 import '../styles/TopNavigationBar.scss';
 import TopicList from 'components/TopicList';
 import FavBadge from './FavBadge';
 
+//TopNavigation is the navbar includ TopicList and FavBadge
 const TopNavigation = (props) => {
 
   return (

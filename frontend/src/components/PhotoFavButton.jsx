@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
+//PhotoFavButton displays the heart icon button on the corner of each photo
 function PhotoFavButton(props) {
   const [isFavorited, setIsFavorited] = useState(false);
 
