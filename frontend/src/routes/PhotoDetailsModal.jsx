@@ -13,9 +13,9 @@ const PhotoDetailsModal = ({ toggleModalState, setFavorites, photo }) => {
         <img src={closeSymbol} alt="close symbol" />
       </button>
       <div className="photo-details-modal__images">
-        <ModalImage data={photo} setFavorites = {setFavorites}  />
+        <ModalImage data={photo} setFavorites={setFavorites} />
         <div className="photo-details-modal__header">Similar Photos</div>
-        <PhotoList photos = {Object.values(photo.similar_photos)} setFavorites= {setFavorites} />
+        <PhotoList photos={Object.values(photo.similar_photos)} setFavorites={setFavorites} />
       </div>
     </div>
   );
