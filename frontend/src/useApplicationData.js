@@ -16,7 +16,7 @@ const useApplicationData = () => {
 
   const initialState = {
     favorites: {},
-    modalState: false,
+    modalState: {},
     photoData: [],
     topicData: []
 
@@ -46,13 +46,13 @@ const useApplicationData = () => {
       case ACTIONS.SET_TOPIC_DATA:
         return { ...state, topicData: action.payload };
       case ACTIONS.SET_FAVORITE:
-        const newObj = { ...state };
-        if (newObj.favorites[action.payload]) {
-          delete newObj.favorites[action.payload];
-          return newObj;
+        const {favorites} = state;
+        if (favorites[action.payload]) {
+          delete favorites[action.payload];
+          return { ...state, favorites: {...favorites}} ;
         }
-        newObj.favorites[action.payload] = true;
-        return newObj;
+        favorites[action.payload] = true;
+        return { ...state, favorites: {...favorites}} ;
       case ACTIONS.GET_PHOTOS_BY_TOPICS:
         return { ...state, photoData: action.payload };
       case ACTIONS.GET_PHOTOS_BY_SEARCH:
@@ -80,7 +80,6 @@ const filterPhotos = function(text) {
       .then(res => res.json())
       .then(data => dispatch({ type: ACTIONS.GET_PHOTOS_BY_SEARCH, payload: data }));
   }; 
-
 
 
   return {

@@ -10,13 +10,13 @@ const App = () => {
   const { state,
     toggleModalState,
     setFavorites,
-setTopic,
-filterPhotos } = useApplicationData();
+    setTopic,
+    filterPhotos } = useApplicationData();
 
   return (
     <div className="App">
-      <HomeRoute photos={state.photoData} topics={state.topicData} toggleModalState={toggleModalState} favorites = {state.favorites} setFavorites = {setFavorites} setTopic = {setTopic} filterPhotos = {filterPhotos} />
-      {state.modalState && <PhotoDetailsModal favorites = {state.favorites} setFavorites = {setFavorites} photo = {state.modalState} toggleModalState={toggleModalState} photos = {state.photoData} />}
+      <HomeRoute photos={state.photoData} topics={state.topicData} toggleModalState={toggleModalState} favorites={state.favorites} setFavorites={setFavorites} setTopic={setTopic} filterPhotos={filterPhotos} />
+      {Object.keys(state.modalState).length != 0 && <PhotoDetailsModal favorites={state.favorites} setFavorites={setFavorites} photo={state.modalState} toggleModalState={toggleModalState} photos={state.photoData} />}
     </div>
   );
 };

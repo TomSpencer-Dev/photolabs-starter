@@ -3,7 +3,6 @@ import { useState } from "react";
 import "../styles/SearchBar.scss";
 
 const SearchBar = ({ filterPhotos }) => {
-console.log(filterPhotos)
   const [text, setText] = useState('');
 
   const handleText = (e) => {

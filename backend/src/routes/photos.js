@@ -7,7 +7,6 @@ module.exports = db => {
     const port = process.env.PORT || 8001;
     const serverUrl = `${protocol}://${host}:${port}`;
     let text = request.query.text;
-console.log(text);
 
     let WHERE_CLAUSE = '';
     if (text) {
