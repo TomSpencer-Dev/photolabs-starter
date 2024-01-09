@@ -6,6 +6,13 @@ module.exports = db => {
     const host = request.hostname;
     const port = process.env.PORT || 8001;
     const serverUrl = `${protocol}://${host}:${port}`;
+    let text = request.query.text;
+console.log(text);
+
+    let WHERE_CLAUSE = '';
+    if (text) {
+      WHERE_CLAUSE = `WHERE photo.country = '${text}' OR photo.city = '${text}' OR user_account.username = '${text}'`;
+    }
 
     db.query(`
       SELECT 
@@ -54,7 +61,8 @@ module.exports = db => {
           )
         ) as photo_data
       FROM photo
-      JOIN user_account ON user_account.id = photo.user_id;
+      JOIN user_account ON user_account.id = photo.user_id
+    ${WHERE_CLAUSE};
     `).then(({ rows }) => {
       response.json(rows[0].photo_data);
     });

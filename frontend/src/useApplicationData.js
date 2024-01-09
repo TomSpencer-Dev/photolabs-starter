@@ -8,7 +8,8 @@ export const ACTIONS = {
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   SET_FAVORITE: 'SET_FAVORITE',
   SET_TOPIC_ID: 'SET_TOPIC_ID',
-  GET_PHOTOS_BY_TOPIC: 'GET_PHOTOS_BY_TOPICS'
+  GET_PHOTOS_BY_TOPIC: 'GET_PHOTOS_BY_TOPICS',
+  GET_PHOTOS_BY_SEARCH: 'GET_PHOTOS_BY_SEARCH'
 };
 
 const useApplicationData = () => {
@@ -18,6 +19,7 @@ const useApplicationData = () => {
     modalState: false,
     photoData: [],
     topicData: []
+
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -52,7 +54,9 @@ const useApplicationData = () => {
         newObj.favorites[action.payload] = true;
         return newObj;
       case ACTIONS.GET_PHOTOS_BY_TOPICS:
-      return { ...state, photoData: action.payload };
+        return { ...state, photoData: action.payload };
+      case ACTIONS.GET_PHOTOS_BY_SEARCH:
+        return { ...state, photoData: action.payload };
 
     }
   }
@@ -71,11 +75,20 @@ const useApplicationData = () => {
       .then(data => dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: data }));
   };
 
+const filterPhotos = function(text) {
+    fetch(`http://localhost:8001/api/photos?text=${text}`)
+      .then(res => res.json())
+      .then(data => dispatch({ type: ACTIONS.GET_PHOTOS_BY_SEARCH, payload: data }));
+  }; 
+
+
+
   return {
     state,
     toggleModalState,
     setFavorites,
-    setTopic
+    setTopic,
+    filterPhotos
   };
 };
 
