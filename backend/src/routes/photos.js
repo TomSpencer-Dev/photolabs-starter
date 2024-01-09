@@ -10,7 +10,7 @@ module.exports = db => {
 
     let WHERE_CLAUSE = '';
     if (text) {
-      WHERE_CLAUSE = `WHERE photo.country = '${text}' OR photo.city = '${text}' OR user_account.username = '${text}'`;
+      WHERE_CLAUSE = `WHERE LOWER(photo.country) = LOWER('${text}') OR LOWER(photo.city) = LOWER('${text}') OR LOWER(user_account.username) = LOWER('${text}')`;
     }
 
     db.query(`

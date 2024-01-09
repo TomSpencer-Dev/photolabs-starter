@@ -40,7 +40,7 @@ const useApplicationData = () => {
   function reducer(state, action) {
     switch (action.type) {
       case ACTIONS.TOGGLE_MODAL_STATE:
-        return { ...state, modalState: action.payload }; //payload is going to be false or a number(phot id)
+        return { ...state, modalState: action.payload }; 
       case ACTIONS.SET_PHOTO_DATA:
         return { ...state, photoData: action.payload };
       case ACTIONS.SET_TOPIC_DATA:

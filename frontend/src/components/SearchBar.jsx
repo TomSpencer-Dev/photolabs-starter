@@ -12,7 +12,7 @@ const SearchBar = ({ filterPhotos }) => {
   return (
     <div className = "SearchBar">
       <label>
-        Search By Username: <input type="text" name="searchBar" value={text} onChange={handleText} />
+        Search: <input type="text" name="searchBar" value={text} onChange={handleText} />
       </label>
       <button type="submit" onClick={() => filterPhotos(text)} >Search</button>
     </div>
